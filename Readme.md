@@ -1,6 +1,6 @@
 # cerebro-wiki
 
-> [Cerebro](https://cerebroapp.com) plugin to use DuckDuckGo as a search engine
+> [Cerebro](https://cerebroapp.com) plugin to search Wikipedia
 
 ## Usage
 
