@@ -1,10 +1,10 @@
-# cerebro-duck-duck-go
+# cerebro-wiki
 
 > [Cerebro](https://cerebroapp.com) plugin to use DuckDuckGo as a search engine
 
 ## Usage
 
-In Cerebro, type any term, and the DuckDuckGo option will show above Google suggestions:
+In Cerebro, type any term, and the Wikipedia search option will show:
 
 ![Sample](screenshot.png)
 
