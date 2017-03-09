@@ -14,4 +14,4 @@ In Cerebro, type any term, and the Wikipedia search option will show:
 
 ## License
 
-MIT © [Tiago Amaro](http://tiagoamaro.com.br)
+MIT © [Adam Clark](https://github.com/adamclark64)
