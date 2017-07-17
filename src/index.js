@@ -1,6 +1,6 @@
 import icon from './icon.png'
 
-const order = 1
+const order = 12
 
 const plugin = ({ term, actions, display }) => {
   var search = (searchTerm) => {
