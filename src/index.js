@@ -1,7 +1,6 @@
 import icon from './icon.png'
 import Preview from "./Preview"
-import React from "react"
-import { memoize } from "cerebro-tools"
+import getSuggestions from "./getWikiSugg"
 const order = 12
 
 const plugin = ({ term, actions, display }) => {
@@ -14,12 +13,20 @@ const plugin = ({ term, actions, display }) => {
     actions.hideWindow()
   }
 
-  display({
-    icon: icon,
-    order: order,
-    title: term,
-    onSelect: () => search(term),
-    getPreview: () => Preview("Apple Inc.", "Apple Inc. is an American multinational technology company headquartered in Cupertino, California that designs, develops, and sells consumer electronics, computer software, and online services.")
+  var wikiSuggestions = getSuggestions(term)
+  wikiSuggestions.then(data => {
+    var i = order;
+
+    // TODO : Real preview
+    data[1].map(entry => {
+      display({
+        icon: icon,
+        title: entry,
+        order: i++,
+        onSelect: () => search(entry),
+        getPreview: () => <Preview term={entry} previewText={entry} />
+      })
+    })
   })
 }
 
