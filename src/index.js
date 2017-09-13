@@ -1,5 +1,7 @@
 import icon from './icon.png'
-
+import Preview from "./Preview"
+import React from "react"
+import { memoize } from "cerebro-tools"
 const order = 12
 
 const plugin = ({ term, actions, display }) => {
@@ -15,8 +17,9 @@ const plugin = ({ term, actions, display }) => {
   display({
     icon: icon,
     order: order, // High priority
-    title: `Search Wikipedia for ${term}`,
-    onSelect: () => search(term)
+    title: term,
+    onSelect: () => search(term),
+    getPreview: () => Preview("Apple Inc.", "Apple Inc. is an American multinational technology company headquartered in Cupertino, California that designs, develops, and sells consumer electronics, computer software, and online services.")
   })
 }
 
