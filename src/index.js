@@ -1,7 +1,9 @@
 import icon from './icon.png'
 import Preview from "./Preview"
 import getSuggestions from "./getWikiSugg"
+import getPage from "./getWikiPreview"
 const order = 12
+const previewCharBlacklist = ['\uf8ff', '\uFFFD']
 
 const plugin = ({ term, actions, display }) => {
   var search = (searchTerm) => {
@@ -15,16 +17,28 @@ const plugin = ({ term, actions, display }) => {
 
   var wikiSuggestions = getSuggestions(term)
   wikiSuggestions.then(data => {
-    var i = order;
+    var dynOrder = order;
+    var pagesString = data[1].map(title => encodeURIComponent(title)).join("|");
+    var pages = getPage(pagesString)
+    pages.then(pagesData => {
+      var rawData = pagesData.query.pages
+      var keys = Object.keys(rawData)
+      var extracts = [];
+      for(var i = 0; i<keys.length; i++) {
+          var extractObject = rawData[keys[i]]
+          var idx = extractObject.title
+          extracts[idx] = extractObject.extract
+          previewCharBlacklist.map(char => {extracts[idx] = extracts[idx].replace(char, '')})
+      }
 
-    // TODO : Real preview
-    data[1].map(entry => {
-      display({
-        icon: icon,
-        title: entry,
-        order: i++,
-        onSelect: () => search(entry),
-        getPreview: () => <Preview term={entry} previewText={entry} />
+      data[1].map(entry => {
+        display({
+          icon: icon,
+          title: entry,
+          order: dynOrder++,
+          onSelect: () => search(entry),
+          getPreview: () => <Preview term={entry} previewText={extracts[entry]} />
+        })
       })
     })
   })
