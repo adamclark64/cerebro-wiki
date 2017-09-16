@@ -1,0 +1,37 @@
+.main {
+	align-self: flex-start;
+	width: 100%;
+	text-align: left;
+	position: relative;
+	margin: 8px;
+}
+
+.articleThumb {
+	float: right;
+	margin: 8px;
+}
+
+.articleTitleBar {
+	padding: 8px 0;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.articleTitleBar > h1 {
+	font: inherit;
+	font-size: 17pt;
+	margin: 0;
+}
+
+.articleTitleBar > h1 span {
+	font-size: 11pt;
+	opacity: 0.4;
+	display: block;
+	margin: 4px 0;
+}
+
+.main > p {
+	margin: 0;
+	padding: 8px 0 0 0;
+	font-size: 11pt;
+	line-height: 1.5;
+}
