@@ -27,8 +27,9 @@ const plugin = ({ term, actions, display }) => {
       for(var i = 0; i<keys.length; i++) {
           var extractObject = rawData[keys[i]]
           var idx = extractObject.title
-          extracts[idx] = extractObject.extract
-          previewCharBlacklist.map(char => {extracts[idx] = extracts[idx].replace(char, '')})
+          var src = (typeof extractObject.thumbnail != 'undefined' ? extractObject.thumbnail.source : "")
+          extracts[idx] = {"text": extractObject.extract, "img": src}
+          previewCharBlacklist.map(char => {extracts[idx].text = extracts[idx].text.replace(char, '')})
       }
 
       data[1].map(entry => {
@@ -37,7 +38,7 @@ const plugin = ({ term, actions, display }) => {
           title: entry,
           order: dynOrder++,
           onSelect: () => search(entry),
-          getPreview: () => <Preview term={entry} previewText={extracts[entry]} />
+          getPreview: () => <Preview term={entry} previewText={extracts[entry].text} thumbnail={extracts[entry].img} />
         })
       })
     })
