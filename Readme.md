@@ -10,4 +10,4 @@ In Cerebro, type any term, and the Wikipedia search option will show:
 
 ## License
 
-MIT © [Adam Clark](https://github.com/adamclark64)
+MIT © [Adam Clark](https://github.com/adamclark64) & [Demetrio Battaglia](https://github.com/deme3)
